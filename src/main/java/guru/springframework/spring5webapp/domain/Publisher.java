@@ -15,6 +15,9 @@ public class Publisher {
     private Long id;
     private String name;
     private int since;
+    @OneToMany
+    @JoinColumn(name = "publisher_id")
+    private Set<Book> books = new HashSet<>();
 
     public Publisher() {
     }
@@ -46,6 +49,14 @@ public class Publisher {
 
     public void setSince(int since) {
         this.since = since;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     @Override
